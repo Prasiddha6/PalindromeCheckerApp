@@ -2,31 +2,33 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
- public class PalindromeCheckerApp {
-     public static void main(String[] args) {
+public class PalindromeCheckerApp {
 
-         Scanner sc = new Scanner(System.in);
-         System.out.print("Enter a string: ");
-         String input = sc.nextLine();
+    public boolean checkPalindrome(String input) {
 
-         // Normalize: remove spaces and convert to lowercase
-         String str = input.replaceAll("\\s+", "").toLowerCase();
+        int start = 0;
+        int end = input.length() - 1;
 
-         // Check palindrome (using simple loop)
-         boolean isPalindrome = true;
-         int n = str.length();
-         for (int i = 0; i < n / 2; i++) {
-             if (str.charAt(i) != str.charAt(n - 1 - i)) {
-                 isPalindrome = false;
-                 break;
-             }
-         }
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
 
-         if (isPalindrome) {
-             System.out.println("Palindrome");
-         } else {
-             System.out.println("Not Palindrome");
-         }
+        return true;
+    }
 
-         sc.close();
-     }}
+    public static void main(String[] args) {
+
+        PalindromeCheckerApp checker = new PalindromeCheckerApp();
+
+        String word = "madam";
+
+        if (checker.checkPalindrome(word))
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not Palindrome");
+    }
+}
