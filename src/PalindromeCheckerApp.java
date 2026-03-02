@@ -1,23 +1,24 @@
+import java.util.Scanner;
 public class PalindromeCheckerApp {
-    /**
-     * UseCase1PalindromeCheckerApp
-     * Version: 1.0
-     * Description: Console-based Palindrome Checker Application
-     */
+    public static void main(String[] args) {
 
-        // Application constants
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Enter a word to check if it is a palindrome: ");
+        String word = scanner.nextLine();
 
-        /**
-         * Main Method - Entry point of the application
-         * JVM invokes this method automatically
-         */
-        public static void main(String[] args) {
+        String reversed = "";
 
-            // Display Welcome Message
-
-            System.out.println("Welcome to the Palindrome Checker Application!");
-            System.out.println("Version 1.0");
-            System.out.println("System initialized successfully.");
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
         }
+
+        if (word.equals(reversed)) {
+            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+        }
+
+        scanner.close();
     }
+}
