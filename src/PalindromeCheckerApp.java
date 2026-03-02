@@ -7,29 +7,26 @@ import java.util.LinkedList;
 
          Scanner sc = new Scanner(System.in);
          System.out.print("Enter a string: ");
-         String str = sc.nextLine();
+         String input = sc.nextLine();
 
-         if (isPalindrome(str)) {
+         // Normalize: remove spaces and convert to lowercase
+         String str = input.replaceAll("\\s+", "").toLowerCase();
+
+         // Check palindrome (using simple loop)
+         boolean isPalindrome = true;
+         int n = str.length();
+         for (int i = 0; i < n / 2; i++) {
+             if (str.charAt(i) != str.charAt(n - 1 - i)) {
+                 isPalindrome = false;
+                 break;
+             }
+         }
+
+         if (isPalindrome) {
              System.out.println("Palindrome");
          } else {
              System.out.println("Not Palindrome");
          }
 
          sc.close();
-     }
-
-     // Simple recursive function
-     private static boolean isPalindrome(String str) {
-         // Base case: empty or single char
-         if (str.length() <= 1) {
-             return true;
-         }
-
-         // Compare first and last characters
-         if (str.charAt(0) != str.charAt(str.length() - 1)) {
-             return false;
-         }
-
-         // Recurse on substring without first and last char
-         return isPalindrome(str.substring(1, str.length() - 1));
      }}
